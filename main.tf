@@ -27,12 +27,12 @@ resource "aws_security_group_rule" "egress-443" {
 }
 
 resource "aws_security_group_rule" "ingress-22" {
-  security_group_id = aws_security_group.nat.id
-  type              = "ingress"
-  cidr_blocks       = var.sshsg
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
+  security_group_id        = aws_security_group.nat.id
+  type                     = "ingress"
+  source_security_group_id = var.sshsg
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
 }
 
 resource "aws_security_group_rule" "ingress-80" {
